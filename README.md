@@ -5,3 +5,4 @@ then run it by :
 java TreasureHunt.java
 
 ```
+this treasure will be placed randomly
