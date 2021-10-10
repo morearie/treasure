@@ -124,10 +124,18 @@ public class TreasureHunt {
 
 	}
 	
-	private static void clrscr() throws IOException {
+	private static void clrscr() {
 		// Clears Screen in java
-		System.out.print("\033[H\033[2J");  
-	    System.out.flush();
+		try {
+			final String os = System.getProperty("os.name");
+			if (os.contains("Windows"))
+				new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+			else
+				Runtime.getRuntime().exec("clear");
+		} catch (Exception e) {
+			System.out.print("\033[H\033[2J");
+			System.out.flush();
+		}
 	}
 
 	public static void main(String[] args) throws IOException {
